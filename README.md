@@ -8,8 +8,14 @@
 
 
 ## 所用组件库及框架
-  ##### 小程序组件库使用的是有赞前端团队开源的移动端组件库Vant
-- [vant Weapp](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+  ##### 小程序组件库使用的是有赞前端团队开源的微信小程序端组件库Vant Weapp
+- [vant Weapp](https://vant-contrib.gitee.io/vant-weapp/#/home)
+- 
+  ##### 小程序云通讯录功能代码中使用的汉字转拼音使用的是wl-pinyin插件完成，在用户导入联系人时提取出首字母后保存进数据库，这是为了实现后续联系人显示时按首字母拼音显示，与手机通讯录类似。
+- [wl-pinyin](https://www.npmjs.com/package/wl-pinyin)
+- 
+  ##### 小程序后端代码中使用的路由管理框架是云开发官方发布的tcb-router，与koa类似，后端采用Node.js编写。
+- [tcb-Router](https://github.com/TencentCloudBase/tcb-router)
 
 
 ## 参考文档
