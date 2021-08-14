@@ -7,6 +7,10 @@
 以下为小程序二维码，请扫码体验：<br />![IMG_1040.JPG](https://cdn.nlark.com/yuque/0/2021/jpeg/1159653/1628926725567-f7baa423-16b2-480c-8ba2-48aa4d523dbf.jpeg#clientId=ua3d1d73c-b337-4&from=paste&height=258&id=uf8c2028e&margin=%5Bobject%20Object%5D&name=IMG_1040.JPG&originHeight=258&originWidth=258&originalType=binary&ratio=1&size=33645&status=done&style=none&taskId=uf9ba6cf2-4975-4f42-bfa8-53b7b561976&width=258)<br />
 
 
+## 所用组件库及框架
+  #小程序组件库使用的是有赞前端团队开源的移动端组件库Vant
+- [vant Weapp](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+
 
 ## 参考文档
 
