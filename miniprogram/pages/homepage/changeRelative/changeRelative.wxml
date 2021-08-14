@@ -1,0 +1,29 @@
+<van-notify id="van-notify" />
+<view style="margin-top:50rpx;"></view>
+<van-steps steps="{{ steps }}" active="{{ active }}" active-color="#3388FF"/>
+<view>
+  <van-cell-group>
+  <van-field wx:if="{{active == 1}}"
+    center
+    clearable
+    size="large"
+    type="textarea"
+    label="姓名"
+    model:value="{{ relativeName }}"
+    placeholder="请修改随礼姓名"
+  />
+</van-cell-group>
+<van-cell-group>
+  <van-field wx:if="{{active == 2}}"
+    center
+    clearable
+    size="large"
+    type="number"
+    label="金额"
+    model:value="{{ relativeMoney }}"
+    placeholder="请修改随礼金额"
+  />
+</van-cell-group>
+  <van-button plain hairline icon="edit" type="info" size="large" bind:tap="clickStep">{{btnText}}</van-button>
+</view>
+

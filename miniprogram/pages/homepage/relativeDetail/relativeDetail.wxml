@@ -1,0 +1,60 @@
+<van-transition show custom-class="block" name="slide-left" duration="500">
+  <van-notify id="van-notify" />
+  <view class="container">
+    <!-- 随礼次数展示 -->
+    <van-cell-group style="width: 100%;" title="回礼次数：{{ relativeDetailObj.changeCount }}次">
+      <van-swipe-cell right-width="{{ 65 }}" style="width: 100%;" wx:for="{{ relativeDetailObj.returnSaluteObj }}" wx:key="index">
+        <van-cell wx:if="{{ relativeDetailObj.changeCount != 0 }}" title="{{ item.name }}" value="{{ item.money }} 元" size="large"/>
+        <view slot="right" style="width: 130rpx; height:100%;" bind:tap="clickDeleteByIdEvent" data-id="{{ index }}" class="delete-group">
+          <text style="color: #f7f7f7; font-size: 29rpx; z-index: 500;">{{item.id}}删除</text>
+        </view>
+      </van-swipe-cell>
+      <van-cell wx:if="{{ relativeDetailObj.changeCount === 0 }}"  title="你还未回过礼，如果已回过，请点击下方新增回礼" size="large"/>
+    </van-cell-group>
+
+
+    <!-- 新增随礼次数 -->
+    <van-cell-group title="新增回礼次数" style="width:100%; margin-top: 50rpx;">
+      <van-field
+        clearable
+        placeholder="请输入本次回礼名称"
+        model:value="{{ inputRelativeName }}"
+      />
+      <van-field
+        clearable
+        type="number"
+        placeholder="请输入本次回礼金额"
+        model:value="{{ inputRelativeMoney }}"
+      />
+      <van-cell custom-class="add-btn-group">
+        <van-button block icon="add-o" bind:click="addReturnASaluteEvent" plain hairline round  type="primary" size="normal">新增</van-button>
+      </van-cell>
+      <van-cell ></van-cell>
+    </van-cell-group>
+   
+    <!-- 随礼数据分析 -->
+    <van-transition show custom-class="block" name="slide-left" duration="500">
+    <van-cell-group style="width:100%;">
+      <!-- 标题及分割线 -->
+      <van-divider
+        contentPosition="center"
+        customStyle="color: #1989fa; border-color: #1989fa; font-size: 25rpx;"
+      >随礼数据分析</van-divider>
+      <!-- 内容展示区 -->
+      <view class="container-item-data-group">
+        <!-- 已支出金额 -->
+        <view style="width:{{circleWidth}}px; box-sizing: border-box; padding: 20rpx 0rpx;   display:flex; flex-direction: column;align-items: center; justify-content: space-evenly;">
+          <van-circle value="{{ leftCircleValue }}" text="已支出金额" color="{{ leftColor }}" />
+          金额：{{ expendMoney }}元
+        </view>
+        <!-- 已收入金额 -->
+        <view style="width:{{circleWidth}}px; box-sizing: border-box; padding: 20rpx 0rpx; display:flex; flex-direction: column;align-items: center; justify-content: space-evenly;">
+          <van-circle value="{{ rightCircleValue }}" text="已收入金额" color="{{ rightColor }}"/>
+          金额：{{relativeDetailObj.relativeMoney}}元
+        </view>
+      </view>
+    </van-cell-group>
+  </van-transition>
+
+  </view>
+</van-transition>

@@ -1,0 +1,42 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "pages/homepage/newRelative/newRelative",
+          "pathName": "pages/homepage/newRelative/newRelative",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/contacts/contacts",
+          "pathName": "pages/contacts/contacts",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/contacts/share/share",
+          "pathName": "pages/contacts/share/share",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

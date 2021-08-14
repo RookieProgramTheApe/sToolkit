@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "修改随礼人信息",
+  "usingComponents": {
+    "van-steps": "@vant/weapp/steps/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-notify": "@vant/weapp/notify/index"
+  }
+}

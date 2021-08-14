@@ -1,0 +1,139 @@
+/* miniprogram/pages/homepage.wxss */
+.add-container{
+  width: 120rpx;
+  height: 120rpx;
+  position: fixed;
+  bottom: 60rpx;
+  right: 30rpx;
+  box-sizing: border-box;
+}
+
+.add-item{
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  opacity: 0.5;
+  background: rgb(116, 194, 223);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+}
+
+.add-text{
+  color: white;
+  font-size: 90rpx;
+  margin-top: -14rpx;
+}
+
+.btn-group{
+  color: aliceblue;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.btn-group view{
+  height: 100%;
+  display: flex;
+  font-size: 29rpx;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.block{
+  width: 100%;
+  height: 100%;
+}
+
+.lunar-group{
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 20rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.lunar-group .lunar-item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20rpx 0rpx;
+  border-radius: 25rpx 25rpx 25rpx 25rpx;
+}
+
+.lunar-group .lunar-item .date-group {
+  width: 89%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: #E3E3E3;
+}
+
+.lunar-group .lunar-item .date-group .left {
+  font-size: 88rpx;
+  color:#dd2c00;
+}
+
+.lunar-group .lunar-item .date-group .right {
+  margin-left: 13rpx;
+  font-size: 29rpx;
+}
+
+.lunar-group .lunar-item .luck-group {
+  width: 89%;
+}
+
+.lunar-group .lunar-item .luck-group .luck-item {
+  font-size: 27rpx;
+  margin-top: 16rpx;
+}
+
+.text-group {
+  font-size: 27rpx;
+  margin-top: 16rpx;
+  color: #000000;
+}
+
+.collapse-group {
+  color: #dd2c00;
+}
+
+.switch-group {
+  color: #646566;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100rpx;
+}
+
+.add-btn-padding {
+  padding: 10rpx 10rpx;
+  box-sizing: border-box;
+}
+
+.cell-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cell-group .right {
+  width: 230rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn {
+  width: 100%;
+}

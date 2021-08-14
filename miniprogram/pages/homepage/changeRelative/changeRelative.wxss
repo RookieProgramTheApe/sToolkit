@@ -1,0 +1,8 @@
+/* pages/homepage/changeRelative/changeRelative.wxss */
+.btn-group{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 35rpx;
+}

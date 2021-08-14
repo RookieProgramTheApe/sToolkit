@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "回礼详情",
+  "usingComponents": {
+    "van-transition": "@vant/weapp/transition/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-circle": "@vant/weapp/circle/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
+  }
+}

@@ -1,0 +1,18 @@
+<view class="container">
+  <van-cell-group style="width: 100%;">
+    <view style="width: 100%;">
+      <van-cell size="large" icon="manager" title="{{ displayName+'   '+phoneNumber }}" >
+        <view class="cell-group">
+          <view class="left">
+            
+          </view>
+          <view class="right">
+            <view><van-button type="warning" icon="orders-o" size="mini" bind:click="setClipBoardDataEvent" data-phoneNumber="{{ phoneNumber }}" data-displayName="{{ displayName }}" round></van-button></view>
+            <view style="margin-left:10rpx;"><van-button type="info" icon="plus" size="mini" bind:click="addEvent" data-phoneNumber="{{ phoneNumber }}" data-displayName="{{ displayName }}" round></van-button></view>
+            <view style="margin-left:10rpx;"><van-button type="primary" icon="phone" size="mini" bind:click="callPhoneEvent" data-phoneNumber="{{ phoneNumber }}" round></van-button></view>
+          </view>
+        </view>
+      </van-cell>
+    </view>
+  </van-cell-group>
+</view>

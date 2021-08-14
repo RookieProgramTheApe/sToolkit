@@ -1,0 +1,236 @@
+<van-notify id="van-notify" />
+<van-toast id="van-toast" />
+<view>
+  <view style="position:fixed; width: 100%; top: 0rpx; z-index: 99;">
+    <!-- 首页展示搜索栏 -->
+    <view bind:tap="focusSearchBar">
+        <van-search class="input-group" wx:if="{{!showInputBarPopup}}" disabled  input-align="center" placeholder="请输入搜索关键词" />
+    </view>
+    <!-- 弹出层搜索栏 -->
+    <van-popup show="{{ showInputBarPopup }}" bind:close="onClose" position="top"
+    custom-style="height: 60%;" round>
+      <!-- 搜索栏 -->
+    <van-search class="input-group" show-action value="{{ inputValue }}" bind:change="inputSearchEvent"  input-align="center" placeholder="请输入搜索关键词" />
+      <view wx:if="{{ show }}" style="width:100%; padding-bottom: 30rpx;">
+        <van-transition show="{{ show }}" duration="450" custom-class="block" name="fade-right">
+          <van-cell-group style="width:100%;">
+            <navigator wx:if="{{!empty}}" wx:for="{{searchDataLists}}" wx:key="index" url="./relativeDetail/relativeDetail?id={{item._id}}">
+            <van-cell size="large" is-link title="{{ item.name }}" value="{{ item.money }} 元" ></van-cell>
+            </navigator>
+          <van-cell-group wx:if="{{ empty }}" title="{{ item.name }}" wx:for="{{ searchDataLists }}" wx:key="index"></van-cell-group>
+          <van-cell-group title="以上为搜索结果，共找到{{ searchDataListsLength }}个相关随礼人" wx:if="{{ !empty }}"></van-cell-group>
+          </van-cell-group>
+        </van-transition>
+      </view>
+    </van-popup>
+      <!-- 农历 -->
+      <van-transition show="{{ showCalendar }}" duration="400" name="fade-up">
+        <view class="lunar-group">
+          <van-loading wx:if="{{ calendarLoading }}" size="65rpx" color="#1989fa" text-size="37rpx">加载中...</van-loading>
+          <view class="lunar-item" wx:if="{{!calendarLoading}}">
+            <!-- 日历与农历 -->
+            <view class="date-group">
+              <view class="left">{{today.day}}</view>
+              <view class="right">
+                <view>{{today.year}}年{{today.month}}月</view>
+                <view>{{lunarCalendarData.yinli}}</view>
+              </view>
+            </view>
+            <!-- 宜， 忌 -->
+            <view class="luck-group">
+              <view class="luck-item">
+                <van-tag type="primary" size="large">宜 </van-tag>
+                {{lunarCalendarData.yi}}
+              </view>
+              <view class="luck-item">
+              <van-tag type="danger" size="large">忌 </van-tag>
+              {{lunarCalendarData.ji}}
+              </view>
+            </view>
+          </view>
+          <!-- 更多信息 -->
+          <van-collapse accordion = "{{true}}" border="{{ false }}" value="{{ activeNames }}" bind:change="onChange">
+            <van-collapse-item title="更多信息">
+              <view class="text-group">
+                  <van-tag color="#ff8f00" plain size="large">五行 </van-tag>
+                    {{lunarCalendarData.wuxing}}
+              </view>
+              <view class="text-group">
+                  <van-tag color="#795548" plain  size="large">	冲煞 </van-tag>
+                    冲牛(己丑)煞西
+              </view>
+              <view class="text-group">
+                  <van-tag color="#00c853" plain  size="large">	吉神宜趋 </van-tag>
+                    {{lunarCalendarData.jishen}}
+              </view>
+              <view class="text-group">
+                  <van-tag color="#d50000" plain  size="large">	彭祖百忌 </van-tag>
+                    {{lunarCalendarData.baiji}}
+              </view>
+              <view class="text-group">
+                  <van-tag color="#7f8c8d" plain  size="large">	凶神宜忌 </van-tag>
+                    {{lunarCalendarData.xiongshen}}
+              </view>
+            </van-collapse-item>
+          </van-collapse>
+        </view>
+      </van-transition>
+  </view>
+
+<!-- 随礼列表 -->
+<view style="position: relative; top: 590rpx;">
+<van-transition show="{{ showCalendar }}" duration="400" name="fade-up">
+    <van-index-bar index-list="{{ indexList }}">
+    <van-swipe-cell
+    disabled="{{ powerLists.onlyRead == 'true' }}"
+    id="swipe-cell"
+    right-width="{{ 90 }}"
+    bind:close="onClose"
+    wx:for="{{ relativeLists }}" wx:key="index"
+  >
+    <van-cell-group>
+      <navigator url="./relativeDetail/relativeDetail?id={{item._id}}">
+        <van-cell size="large" icon="manager" title="{{ item.name }}" is-link>
+          <view class="cell-group">
+            <view class="right">
+              {{ item.money }} 元
+              <view style="width:10rpx;"></view>
+              <view>
+                <van-icon name="play-circle" size="27" data-sound="你所点击的随礼人姓名是：{{item.name}}， 随礼金额为：{{ item.money }}元" color="#339af0" bind:click="playRelativeDetail"/>
+              </view>
+            </view>
+          </view>
+        </van-cell>
+      </navigator>
+    </van-cell-group>
+    <view slot="right" class="btn-group">
+      <view style="padding: 27rpx; background-color:#5c7cfa;" bind:tap="changeRelative" data-id = "{{item._id}}">
+        <van-icon name="column" color="#000" size="large" />
+      </view>
+      <view style="padding: 27rpx; background-color: #EE0A24;" bind:tap="deleteRelative" data-id="{{item._id}}">
+        <van-icon name="delete" color="#000" size="large"/>
+      </view>
+    </view>
+  </van-swipe-cell>
+
+  <view style="text-align:center; padding-bottom:150rpx;">
+    <van-loading wx:if="{{ loadingFlag }}" size="65rpx" color="#1989fa" text-size="37rpx">加载中...</van-loading>
+  </view>
+
+  <van-cell-group wx:if="{{ countFlag }}" title="随礼总计">
+    <van-cell icon="friends">
+      <view slot="title">
+        <view class="van-cell-text">总人数：{{ relativelistsLength }} 人</view>
+      </view>
+      <view style="color:#323233;">
+        <van-icon name="gold-coin"/> 总金额：{{ totalMoney }} 元
+      </view>
+    </van-cell>
+  </van-cell-group>
+  </van-index-bar>
+</van-transition>
+</view>
+
+
+<!-- 新增按钮 -->
+<view class="add-container" wx:if="{{ powerLists.onlyRead == 'false' }}">
+  <view bind:tap="test" class="add-item" url="./newRelative/newRelative?openId={{openId}}">
+    <van-icon style="font-size:75rpx; color:white;" name="plus" />
+  </view>
+</view>
+
+<van-popup show="{{ showAddBtn }}" bind:close="onAddbtnClose" position="bottom"
+    custom-style="height: 50%;" round>
+    <view class="btn-group" style="position:fixed; z-index: 500; background-color:#FFF;">
+      <van-button  round icon="add" type="primary" bind:click="btnClickEvent" data-id="1">新增</van-button>
+      <van-button disabled="{{ shareBtn }}" open-type="share" send-message-path="pages/homepage/relativeDetail/relativeDetail" round icon="share" color="#fcc419" bind:click="btnClickEvent" data-id="2">分享</van-button>
+      <van-button disabled="{{ powerBtn }}" round icon="lock" type="danger" bind:click="btnClickEvent" data-id="3">权限</van-button>
+      <van-button disabled="{{ listBtn }}" round icon="wap-nav" type="info" bind:click="btnClickEvent" data-id="4">列表</van-button>
+    </view>
+
+    <view style="margin-top: 110rpx;"></view>
+
+    <!-- 新增 -->
+    <view style="margin-top: 20rpx;" class="add-btn-padding" wx:if="{{btnNumberFlag === 1}}">
+      <van-cell-group title="新增随礼人信息">
+        <van-field
+          center
+          clearable
+          type="textarea"
+          label="姓名"
+          model:value="{{ relativeName }}"
+          placeholder="请输入随礼姓名"
+        />
+        <van-field
+          center
+          clearable
+          type="number"
+          label="金额(元)"
+          model:value="{{ relativeMoney }}"
+          placeholder="请输入金额"
+        />
+        <view style="height: 25rpx;"></view>
+        <van-button  loading="{{addBtnLoading}}" color="linear-gradient(to left, #00fff0, #0083fe)"  size="large" bind:click="clickNewRelativeBtn" round >新增随礼人</van-button>
+      </van-cell-group>
+    </view>
+
+    <!-- 权限 -->
+    <view>
+      <van-cell-group title="共享人信息及权限设置" wx:if="{{btnNumberFlag === 3}}">
+        <van-field
+          model:value="{{ shareName }}"
+          required
+          clearable
+          label="共享人性名"
+          placeholder="请输入姓名"
+        />
+        <van-cell>
+          <view class="switch-group">
+            设置共享人为只读权限
+            <van-switch checked="{{ onlyReadChecked }}" bind:change="onOnlyReadCheckedChange" />
+          </view>
+        </van-cell>
+        <van-cell>
+          <view class="switch-group">
+            设置共享人为读写权限
+            <van-switch checked="{{ readAndWriteChecked }}" bind:change="onReadAndWriteCheckedChange" />
+          </view>
+        </van-cell>
+      </van-cell-group>
+    </view>
+
+    <!-- 列表 -->
+    <view wx:if="{{btnNumberFlag === 4}}">
+      <block wx:for="{{ powerTableLists }}" wx:key="index">
+        <van-cell-group title="共享成员列表">
+          <van-field
+            readonly
+            value="{{ item.shareName }}"
+            label="共享人性名"
+            placeholder="请输入姓名"
+          />
+          <van-cell>
+            <view class="switch-group">
+              设置共享人为只读权限
+              <van-switch wx:if="{{ item.onlyRead == 'true' }}" checked="{{ true }}" bind:change="upateOnlyRead" data-powerOpenId="{{item.powerOpenId}}"/>
+              <van-switch wx:if="{{ item.onlyRead == 'false' }}" checked="{{ false }}" bind:change="upateOnlyRead" data-powerOpenId="{{item.powerOpenId}}"/>
+            </view>
+          </van-cell>
+          <van-cell>
+            <view class="switch-group">
+              设置共享人为读写权限
+              <van-switch wx:if="{{ item.readAndWrite == 'true' }}" checked="{{ true }}" bind:change="upateOnlyRead" data-powerOpenId="{{item.powerOpenId}}" />
+
+              <van-switch wx:if="{{ item.readAndWrite == 'false' }}" checked="{{ false }}" bind:change="upateOnlyRead" data-powerOpenId="{{item.powerOpenId}}" />
+            </view>
+          </van-cell>
+        </van-cell-group>
+      </block>
+    </view>
+</van-popup>
+</view>
+
+<!-- <view style="position: fixed; bottom: 10rpx;">
+  <van-button type="info" icon="plus" bind:click="addEvent" round>ddd</van-button>
+</view> -->
+

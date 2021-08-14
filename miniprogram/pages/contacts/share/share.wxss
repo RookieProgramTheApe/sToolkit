@@ -1,0 +1,25 @@
+/* pages/contacts/share/share.wxss */
+.cell-group {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cell-group .right {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100rpx;
+}
+
+.container{
+  width: 100%;
+  margin-top: 350rpx;
+}

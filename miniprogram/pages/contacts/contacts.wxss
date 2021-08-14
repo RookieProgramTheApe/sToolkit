@@ -1,0 +1,18 @@
+/* miniprogram/pages/contacts/contacts.wxss */
+.cell-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cell-group .right {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 100rpx;
+}

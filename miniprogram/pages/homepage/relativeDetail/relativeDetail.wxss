@@ -1,0 +1,24 @@
+/* pages/homepage/relativeDetail/relativeDetail.wxss */
+.container{
+  width: 100%;
+  background-color: #F7F8FA;
+  box-sizing: border-box;
+  padding-top: 35rpx;
+}
+
+.add-btn-group{
+  display: flex;
+  justify-content: center;
+}
+
+.container-item-data-group{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.delete-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EE0A24;
+}

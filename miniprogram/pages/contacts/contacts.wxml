@@ -1,0 +1,35 @@
+<van-button bind:click="addContact" size="large"  plain>添加联系人</van-button>
+<van-index-bar z-index="{{200}}" index-list="{{ indexList }}" select="test">
+  <view wx:for="{{ contactLists }}" wx:key="index">
+    <van-index-anchor index="{{ item.index }}" />
+    <van-swipe-cell
+    right-width="{{ 90 }}"
+    bind:close="onClose"
+    wx:for="{{ item.data }}" wx:key="index" wx:for-item="data"
+  >
+    <van-cell-group>
+      <view>
+        <van-cell size="large" icon="manager" title="{{ data.displayName }}">
+          <view class="cell-group">
+            <view class="right">
+              <view><van-button type="info" icon="plus" size="mini" bind:click="addEvent" data-phoneNumber="{{ data.phoneNumber }}" data-displayName="{{ data.displayName }}" round></van-button></view>
+              <view style="margin-left:10rpx;"><van-button type="primary" icon="phone" size="mini" bind:click="callPhoneEvent" data-phoneNumber="{{ data.phoneNumber }}" round></van-button></view>
+              <view style="margin-left:10rpx;"><van-button icon="share" size="mini" hairline open-type="share"      dataset="{{data.displayName+'~'+data.phoneNumber }}" round></van-button></view>
+            </view>
+          </view>
+        </van-cell>
+      </view>
+    </van-cell-group>
+    <view slot="right" class="btn-group">
+      <view style="padding: 27rpx; background-color:#5c7cfa;" bind:tap="changeRelative" data-id="{{item._id}}">
+        <van-icon name="column" color="#000" size="large" />
+      </view>
+      <view style="padding: 27rpx; background-color: #EE0A24;" bind:tap="deleteRelative" data-id="{{item._id}}">
+        <van-icon name="delete" color="#000" size="large"/>
+      </view>
+    </view>
+  </van-swipe-cell>
+  </view>
+  <view wx:if="{{showView}}" style="height: 1100rpx;"></view>
+</van-index-bar>
+

@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/homepage/homepage",
+    "pages/contacts/contacts",
+    "pages/contacts/share/share",
+    "pages/homepage/changeRelative/changeRelative",
+    "pages/homepage/relativeDetail/relativeDetail"
+  ],
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/homepage/homepage",
+        "text": "随礼薄",
+        "iconPath": "image/people.png",
+        "selectedIconPath": "image/sPeople.png"
+      },
+      {
+        "pagePath": "pages/contacts/contacts",
+        "text": "通讯录",
+        "iconPath": "image/contacts.png",
+        "selectedIconPath": "image/sContacts.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "家庭百宝箱",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.4",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+  "requiredBackgroundModes" : ["audio"]
+}
