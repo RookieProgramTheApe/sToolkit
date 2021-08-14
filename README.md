@@ -8,7 +8,7 @@
 
 
 ## 所用组件库及框架
-  #小程序组件库使用的是有赞前端团队开源的移动端组件库Vant
+  ### 小程序组件库使用的是有赞前端团队开源的移动端组件库Vant
 - [vant Weapp](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
 
 
