@@ -6,7 +6,7 @@
 
 
 
-
+    
 ## 所用组件库及框架
   ##### 小程序组件库使用的是有赞前端团队开源的微信小程序端组件库Vant Weapp
 - [vant Weapp](https://vant-contrib.gitee.io/vant-weapp/#/home)
